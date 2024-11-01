@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-book-open"></i> PortfolioSoliCode</h1>
+        <p>Gestion de Portfolio</p>
+    </header>
+    
+        <section class="form-section">
+            <h2 id="form-titre">Student information</h2>
+            <form id="form">
+                <div class="form-group">
+                    <label for="firstName">First name</label>
+                    <input type="text" id="firstName" placeholder="Entrez le titre" >
+                    <span class="error" id="firstNameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last  name</label>
+
+                    <input type="text" id="lastName" placeholder="Entrez l'auteur">
+                    <span class="error" id="lastNameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Entrez l'année de publication" min="1800" max="2024" >
+                    <span class="error" id="emailError"></span>
+                </div>
+
+                <div class="form-groupe">
+                    <label for="tel">Phone</label>
+                    <input type="tel" id="tel" placeholder="0.00 Dh"  >
+                    <span class="error" id="telError"></span>
+                </div>
+
+                <div class="form-groupe">
+                    <label for="group">Group</label>
+                    <select name="" id="group">
+                        <option value="DW101">DW101</option>
+                        <option value="DW102">DW102</option>
+                        <option value="DW103">DW103</option>
+                        <option value="DW104">DW104</option>
+                    </select>
+                    <span class="error" id="groupError"></span>
+                </div>
+
+                <input type="button" value="Next"  id="next" onclick="addStudent()">
+
+            </form>
+        </section>
+
+    
+
+<script src="script.js"></script>
+</body>
+</html>
