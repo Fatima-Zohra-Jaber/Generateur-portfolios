@@ -7,48 +7,51 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Projects</h1>
+    <header>
+        <h1><i class="fa-solid fa-address-card"></i> Portfolio Management</h1>
+        <p>Create your Portfolio easily</p>
+    </header>
     <section class="form-section">
         <h2 id="form-titre">Project information</h2>
         <form id="form">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" id="title" placeholder="Enter project title" >
+                <input type="text" id="title" placeholder="Enter project title" onkeyup="validPoject()">
                 <span class="error" id="titleError"></span>
             </div>
 
             <div class="form-group">
                 <label for="link">GitHub link</label>
 
-                <input type="text" id="link" placeholder="Enter GitHub link">
+                <input type="text" id="link" placeholder="Enter GitHub link" onkeyup="validPoject()">
                 <span class="error" id="linkError"></span>
             </div>
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" id="date" >
+                <input type="date" id="date" onchange="validPoject()">
                 <span class="error" id="dateError"></span>
             </div>
 
-            <div class="form-groupe">
-                <label for="group">skills</label>
-
-                <input type="checkbox" value="html" id="html" name="skills">
-                <label for="html">HTML</label>
-                <input type="checkbox" value="css" id="css" name="skills">
-                <label for="css">CSS</label>
-                <input type="checkbox" value="js" id="js" name="skills">
-                <label for="js">JS</label>
-                <input type="checkbox" value="php" id="php" name="skills">
-                <label for="php">PHP</label>
-                <input type="checkbox" value="sql" id="sql" name="skills">
-                <label for="sql">SQL</label>
-
-                <span class="error" id="groupError"></span>
+            <div class="form-group">
+                <label for="skills">Skills</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" value="html" id="html" name="skills">
+                    <label for="html">HTML</label>
+                    <input type="checkbox" value="css" id="css" name="skills">
+                    <label for="css">CSS</label>
+                    <input type="checkbox" value="js" id="js" name="skills">
+                    <label for="js">JS</label>
+                    <input type="checkbox" value="php" id="php" name="skills">
+                    <label for="php">PHP</label>
+                    <input type="checkbox" value="sql" id="sql" name="skills">
+                    <label  for="sql">SQL</label>    
+                </div>
+                <span class="error" id="skillsError"></span>
             </div>
             
-            <input type="button" value="Add Project"  id="addButton" onclick="addProject()">
             <input type="button" value="Finish"  id="finishButton" onclick="window.location.href = 'portfolio.html'">
+            <input type="button" value="Add Project"  id="addButton" onclick="addProject()">
         </form>
     </section>
 

@@ -9,8 +9,8 @@
 </head>
 <body>
     <header>
-        <h1><i class="fas fa-book-open"></i> PortfolioSoliCode</h1>
-        <p>Gestion de Portfolio</p>
+        <h1><i class="fa-solid fa-address-card"></i> Portfolio Management</h1>
+        <p>Create your Portfolio easily</p>
     </header>
     
         <section class="form-section">
@@ -18,32 +18,32 @@
             <form id="form">
                 <div class="form-group">
                     <label for="firstName">First name</label>
-                    <input type="text" id="firstName" placeholder="Enter first name" >
+                    <input type="text" id="firstName" placeholder="Enter your first name" onkeyup="validStudent()">
                     <span class="error" id="firstNameError"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="lastName">Last  name</label>
-
-                    <input type="text" id="lastName" placeholder="Enter last name">
+                    <input type="text" id="lastName" placeholder="Enter your last name" onkeyup="validStudent()">
                     <span class="error" id="lastNameError"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="Enter email">
+                    <input type="email" id="email" placeholder="example@gmail.com" onkeyup="validStudent()">
                     <span class="error" id="emailError"></span>
                 </div>
 
-                <div class="form-groupe">
+                <div class="form-group">
                     <label for="tel">Phone</label>
-                    <input type="tel" id="tel" placeholder="Enter phone number"  >
+                    <input type="tel" id="tel" placeholder="Enter your phone number" maxlength=10 onkeyup="validStudent()" >
                     <span class="error" id="telError"></span>
                 </div>
 
-                <div class="form-groupe">
+                <div class="form-group">
                     <label for="group">Group</label>
-                    <select name="" id="group">
+                    <select name="" id="group" onchange="validStudent()">
+                        <option value="">Select your group</option>
                         <option value="DW101">DW101</option>
                         <option value="DW102">DW102</option>
                         <option value="DW103">DW103</option>
@@ -51,7 +51,7 @@
                     </select>
                     <span class="error" id="groupError"></span>
                 </div>
-                <input type="button" value="Next"  id="next" onclick="addStudent()">
+                <input type="button" value='Next'  id="next" class="next-button" onclick="addStudent()">
                 
 
             </form>
