@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
 </head>
 <body>
     <header>
@@ -13,7 +13,7 @@
         <p>Create your Portfolio easily</p>
     </header>
     
-        <section class="form-section">
+        <section class="studentForm">
             <h2 id="form-titre">Student information</h2>
             <form id="form">
                 <div class="form-group">
@@ -30,13 +30,13 @@
 
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="example@gmail.com" onkeyup="validStudent()">
+                    <input type="email" id="email" placeholder="lastname.firstname.solicode@gmail.com" onkeyup="validStudent()">
                     <span class="error" id="emailError"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="tel">Phone</label>
-                    <input type="tel" id="tel" placeholder="Enter your phone number" maxlength=10 onkeyup="validStudent()" >
+                    <input type="tel" id="tel" placeholder="+212XXX-XX-XX-XX" maxlength=16 onkeyup="validStudent()" >
                     <span class="error" id="telError"></span>
                 </div>
 

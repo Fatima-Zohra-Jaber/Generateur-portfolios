@@ -18,7 +18,8 @@ class Student{
     }
 }
 
-   
+//************* index page   *************// 
+
     const firstName = document.getElementById('firstName');
     const lastName = document.getElementById('lastName');
     const email = document.getElementById('email');
@@ -26,42 +27,45 @@ class Student{
     const group = document.getElementById('group');
     let  students = [];
 
+
 function addStudent(){
     if(validStudent()){
-        const newStudent = new  Student(firstName.value,lastName.value,email.value,tel.value,group.value);
+        const newStudent = new  Student(firstName.value.trim(),lastName.value.trim(),email.value,tel.value,group.value);
         students = JSON.parse(window.localStorage.getItem("students")) || [];
         students.push(newStudent);
         window.localStorage.setItem("students", JSON.stringify(students));
+        document.getElementById('form').reset();
         window.location.href = "projets.html";
     }
 }
 
 function validStudent(){
     let valid=true;
-    if(firstName.value == ""){
-        showError("firstNameError","Please enter your first name.");
-        valid=false;
-    }else if(!/^[a-zA-Z\s']+$/.test(firstName.value)){
+    const regExpEmail= new RegExp(`^${lastName.value.trim().replace(' ','')}\.${firstName.value.trim().replace(' ','')}\.solicode@gmail.com$`);
+    if(firstName.value.trim() == ""){
+            showError("firstNameError","Please enter your first name.");
+            valid=false;
+    }else if(!/^[a-zA-Z\s']+$/.test(firstName.value.trim())){
             showError("firstNameError","Please enter a valid first name.");
             valid=false;
         }else{
             hideError("firstNameError");
         }
 
-    if(lastName.value == ""){
-        showError("lastNameError","Please enter your last name.");
-        valid=false;
-    }else if(!/^[a-zA-Z\s']+$/.test(lastName.value)){
+    if(lastName.value.trim() == ""){
+            showError("lastNameError","Please enter your last name.");
+            valid=false;
+    }else if(!/^[a-zA-Z\s']+$/.test(lastName.value.trim())){
             showError("lastNameError","Please enter a valid last name.");
             valid=false;
         }else{
             hideError("lastNameError");
         }
 
-    if(email.value == ""){
+    if(email.value.trim() == ""){
         showError("emailError","Please enter your email address.");
         valid=false;
-    }else if(!/^[a-zA-Z0-9\s'-_.]+@gmail.\w+$/.test(email.value)){
+    }else if(!regExpEmail.test(email.value.trim())){
             showError("emailError","Please enter a valid Gmail address");
             valid=false;
         }else{
@@ -71,7 +75,7 @@ function validStudent(){
     if(tel.value == ""){
         showError("telError","Please enter your phone number.");
         valid=false;
-    }else if(!/^0(6||7||8)\d{8}$/.test(tel.value)){
+    }else if(!/^\+212\d{3}-\d{2}-\d{2}-\d{2}$/.test(tel.value)){
             showError("telError","Please enter a valid phone number.");
             valid=false;
         }else{
@@ -87,45 +91,47 @@ function validStudent(){
     return valid;
 }
 
-function showError(id,msg){
-    document.getElementById(id).innerHTML=msg;
-}
-
-function hideError(id){
-    document.getElementById(id).innerHTML="";
-}
+//************* student page   *************// 
 
     const title = document.getElementById('title');
     const link = document.getElementById('link');
     const date = document.getElementById('date');
     let skills;
+   
     
 function addProject(){
     if(validPoject()){
         skills =  Array.from(document.querySelectorAll('input[name="skills"]:checked'), (checkbox) => checkbox.value);
-        console.log(skills);
         const newProject = new Project(title.value,link.value,date.value,skills);
         students = JSON.parse(window.localStorage.getItem("students")) || [];
         let i = students.length-1;
         const student = students[i];
         student.projects.push(newProject);
+        projectCart(newProject);
         window.localStorage.setItem("students", JSON.stringify(students));
+        document.getElementById('form').reset();
     }
 }
 
 function validPoject(){
     let valid=true;
-    if(title.value == ""){
+    let currentDate = new Date();
+    // const year= currentDate.getFullYear();
+    // const month= currentDate.getMonth();
+    // const day=currentDate.getDay();
+    // currentDate=`${year}-${month}-${day}`;
+    console.log(date.value);
+    if(title.value.trim() == ""){
         showError("titleError","Please enter the title of the project.");
         valid=false;
-    }else if(!/^[a-zA-Z0-9\s\.-_']+$/.test(title.value)){
+    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(title.value)){
             showError("titleError","Please enter a valid title for the project.");
             valid=false;
         }else{
             hideError("titleError");
         }
 
-    if(link.value == ""){
+    if(link.value.trim() == ""){
         showError("linkError","Please enter the link of the project.");
         valid=false;
     }else if(!/^(https:\/\/)?github\.com\/[A-Za-z0-9_-]+\/[A-Za-z0-9_-]+(\.git)?$/.test(link.value)){
@@ -135,10 +141,13 @@ function validPoject(){
             hideError("linkError");
         }
 
-    if(date.value == ""){
+    if(date.value > currentDate){
         showError("dateError","Please enter the date of the project.");
         valid=false;
-    }else{
+        }else if(date.value > currentDate ){
+            showError("linkError","Please enter a valid GitHub link of the project.");
+            valid=false;
+        }else{
             hideError("dateError");
         }
  skills = Array.from(document.querySelectorAll('input[name="skills"]:checked'));
@@ -151,60 +160,47 @@ function validPoject(){
     return valid;
 }
 
-// Appeler showStudent uniquement si la page est portfolio.html
-document.addEventListener('DOMContentLoaded', () => {
-    if (window.location.pathname.endsWith("portfolio.html")) {
-        showStudent(); 
-    }
-});
+//************* portfolio page   *************// 
 
-// window.addEventListener('popstate', () => {
-//     if (window.location.href.includes("portfolio.html")) {
-//         showStudent();
+// document.addEventListener('DOMContentLoaded', () => {
+//     if (window.location.pathname.endsWith("portfolio.html")) {
+//         showStudent(); 
 //     }
 // });
 
+
 function showStudent(){
-    // window.location.href = 'portfolio.html';
+
     let  students = JSON.parse(window.localStorage.getItem("students")) || [];
     let i = students.length-1;
     const student = students[i];
-    const personSection = document.getElementById('studentBlock');
-    let personInfo = document.createElement('div');
-    personInfo.className='personInfo'
-    personInfo.innerHTML = `<h1> ${student.firstName} ${student.lastName}</h1>
-                            <h2>Web Developer </h2>
-                            <p><i class="fa-solid fa-at"></i>${student.email}</p>
-                            <p><i class="fa-solid fa-phone"></i> ${student.tel}</p>
-                            <p><i class="fa-solid fa-user-group"></i> ${student.group}</p>`;
-    personSection.appendChild(personInfo);
-    
-    const projects = student.projects || [];
-    if (projects.length === 0) {
-        projectsSection.innerHTML += "<p>No projects found.</p>";
+    if(student.projects.length == 0){
+        alert('Add project');
     }else{
-        for(let i=0; i<projects.length;i++){
-            const projectsSection = document.getElementById('projectsSection');
-        let projectSection = document.createElement('div');
-        projectSection.className="project";
-        projectSection.innerHTML = ` <h3>${projects[i].title}</h3>
-                                    <p><span>GitHub link:</span> <a href="${projects[i].gitHubLink}">${projects[i].gitHubLink}</a> </p>
-                                    <p><span>Date:</span> ${projects[i].date}</p>
-                                    <p><span>Skills:</span> ${projects[i].skills.join(', ')}</p>`;
-        projectsSection.appendChild(projectSection);
-        }
+        window.location.href="portfolio.html"
+        const personSection = document.getElementById('studentBlock');
+        let personInfo = document.createElement('div');
+        personInfo.className='personInfo'
+        personInfo.innerHTML = `<h1> ${student.firstName} ${student.lastName}</h1>
+                                <h2>Web Developer </h2>
+                                <p><i class="fa-solid fa-at"></i>${student.email}</p>
+                                <p><i class="fa-solid fa-phone"></i> ${student.tel}</p>
+                                <p><i class="fa-solid fa-user-group"></i> ${student.group}</p>`;
+        personSection.appendChild(personInfo);
+        
+        const projects = student.projects || [];
+            for(let i=0; i<projects.length;i++){
+                projectCart(projects[i]);
+            }
     }
-    
 }
 
-// document.getElementById('download').addEventListener('click', download());
+
 
 function download(){
     
-        // Sélectionner le contenu à exporter
         const content = document.getElementById('content');
 
-        // Options pour la génération du PDF
         const options = {
             margin:       0.5,        
             filename:     'mon_portfolio.pdf',
@@ -213,36 +209,32 @@ function download(){
             jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
         };
 
-        // Convertir le contenu en PDF
         html2pdf().set(options).from(content).save();
     
 }
 
-// function downloadImage(url, filename) {
-//     // Crée un élément <a>
-//     const a = document.createElement('a');
-//     a.href = url;
-//     a.download = filename; // Nom du fichier à télécharger
+//************* global functions   *************// 
 
-//     // Ajoute l'élément <a> au document pour qu'il soit cliquable
-//     document.body.appendChild(a);
+function showError(id,msg){
+    document.getElementById(id).innerHTML=msg;
+}
 
-//     // Simule un clic pour démarrer le téléchargement
-//     a.click();
+function hideError(id){
+    document.getElementById(id).innerHTML="";
+}
 
-//     // Supprime l'élément <a> du document
-//     document.body.removeChild(a);
-// }
+function projectCart(project){
+    const projectsSection = document.getElementById('projectsSection');
+    let projectSection = document.createElement('div');
+    projectSection.className="project";
+    projectSection.innerHTML = ` <h3>${project.title}</h3>
+                                <p><span>GitHub link:</span> <a href="${project.gitHubLink}">${project.gitHubLink}</a> </p>
+                                <p><span>Release in:</span> ${project.date}</p>
+                                <p><span>Skills:</span> ${project.skills.join(', ')}</p>`;
+    projectsSection.appendChild(projectSection);
+}
 
-// // Exemple d'utilisation
-// downloadImage('https://example.com/image.jpg', 'mon_image.jpg');
-// document.getElementById('fileInput').addEventListener('change', function(event) {
-//     const file = event.target.files[0];
-//     if (file) {
-//         alert(`Fichier sélectionné : ${file.name}`);
-//         // Ici, tu peux ajouter du code pour traiter le fichier sélectionné
-//     }
-// });
+
 
 // //localStorage
 // window.localStorage.setItem("student", JSON.stringify(student));
