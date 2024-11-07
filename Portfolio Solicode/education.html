@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1> Portfolio Management</h1>
+        <p>Build your professional portfolio easily</p>
+    </header>
+    <main >
+        <section class="educationForm">
+            <h2 id="titleForm">Education information</h2>
+            <form id="form">
+                <div class="form-group">
+                    <label for="diploma">Diploma</label>
+                    <input type="text" id="diploma" placeholder="Enter your diploma level" onkeyup="validEducation()">
+                    <span class="error" id="diplomaError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Start date</label>
+                    <input type="date" id="startDate" placeholder="Enter the start date" onkeyup="validEducation()">
+                    <span class="error" id="startDateError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End date</label>
+                    <input type="date" id="endDate" placeholder="Enter the end date" onkeyup="validEducation()">
+                    <span class="error" id="endDateError"></span>
+                </div>
+    
+                <div class="form-group">
+                    <label for="school">School</label>
+                    <input type="text" id="school" placeholder="Enter the name of the school" onkeyup="validEducation()">
+                    <span class="error" id="schoolError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="major">Major</label>
+                    <input type="text" id="major" placeholder="Enter the major of the school" onkeyup="validEducation()">
+                    <span class="error" id="majorError"></span>
+                </div>
+    
+                <div class="form-group button">
+                <input type="button" value="Valid"  id="validButton" onclick="addEducation()">
+                <input type="button" value='Next'  id="next" class="nextButton" onclick="window.location.href = 'experience.html'">
+                </div>
+
+            </form>
+        </section>
+        <section id="educationBlock">
+            <h2 id="titleBlock"> My Eduction Career</h2>
+            <div id="educationsSection">
+                <!-- code  js -->
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

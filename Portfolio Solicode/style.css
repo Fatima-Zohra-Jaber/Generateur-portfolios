@@ -48,7 +48,7 @@ header p {
     font-size: 1.1rem;
 }
 
-.studentForm, .projectForm {
+.studentForm,.educationForm,.experienceForm, .projectForm {
     max-width: 40%;
     margin: 3rem auto;
     background: var(--surface);
@@ -144,17 +144,16 @@ input[type="checkbox"]:checked::after {
 }
 
 .checkbox-group label {
-    margin-right: 30px;
+    margin-right: 15px;
     cursor: pointer;
 }
 .button{
     display: flex;
     justify-content: end;
 }
-.nextButton, #finishButton, #validButton {
+.nextButton, #finishButton, #validButton,#download {
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
     color: white;
-    display: flex;
     border: none;
     padding: 1rem 2rem;
     margin-left: 0.5rem;
@@ -166,6 +165,7 @@ input[type="checkbox"]:checked::after {
     font-weight: 600;
     letter-spacing: 1px;
 }
+
 
 .nextButton:hover , #finishButton:hover , #validButton:hover  {
     transform: translateY(-2px);
@@ -179,7 +179,7 @@ input[type="checkbox"]:checked::after {
 }
 
 
-@keyframes fadeInUp {
+@keyframes animationInputs {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -191,7 +191,7 @@ input[type="checkbox"]:checked::after {
 }
 
 .form-group {
-    animation: fadeInUp 0.5s ease-out forwards;
+    animation: animationInputs 0.5s ease-out forwards;
     opacity: 0;
 }
 

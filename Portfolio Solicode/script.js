@@ -1,3 +1,21 @@
+class Education{
+    constructor(diploma,startDate,endDate,school,major){
+        this.diploma=diploma;
+        this.startDate=startDate;
+        this.endDate=endDate;
+        this.school=school;
+        this.major=major;
+    }
+}
+class Experience{
+    constructor(field,startDate,endDate,company,description){
+        this.field=field;
+        this.startDate=startDate;
+        this.endDate=endDate;
+        this.company=company;
+        this.description=description;
+    }
+}
 class Project{
     constructor(title,description,link,date,skills){
         this.title=title;
@@ -7,7 +25,6 @@ class Project{
         this.skills=skills;
     }
 }
-
 class Student{
     constructor(firstName,lastName,email,tel,group){
         this.firstName=firstName;
@@ -15,6 +32,8 @@ class Student{
         this.email=email;
         this.tel=tel;
         this.group=group;
+        this.educations=[];
+        this.experiences=[];
         this.projects=[];
     }
 }
@@ -38,7 +57,7 @@ function addStudent(){
         window.localStorage.setItem("students", JSON.stringify(students));
         document.getElementById('form').reset();
         inputs.forEach(input => {input.style.borderColor = '';});
-        window.location.href = "projets.html";
+        window.location.href = "education.html";
     }
 }
 
@@ -107,11 +126,164 @@ function validStudent(){
     } 
     return valid;
 }
+//************* Education Page   *************// 
 
-//************* student page   *************// 
+    const diploma = document.getElementById('diploma');
+    const startDateEduc = document.getElementById('startDate');
+    const endDateEduc = document.getElementById('endDate');
+    const school = document.getElementById('school');
+    const major = document.getElementById('major');
+    const currentDate = new Date().toISOString().split('T')[0];
+
+function addEducation(){
+if(validEducation()){
+    const newEducation = new Education(diploma.value,startDateEduc.value,endDateEduc.value,school.value,major.value);
+    students = JSON.parse(window.localStorage.getItem("students")) || [];
+    let i = students.length-1;
+    const student = students[i];
+    student.educations.push(newEducation);
+    // projectCart(newEducation);
+    window.localStorage.setItem("students", JSON.stringify(students));
+    document.getElementById('form').reset();
+    inputs.forEach(input => {input.style.borderColor = '';});
+
+}
+}
+
+function validEducation(){
+let valid=true;
+if(diploma.value.trim() == ""){
+    showError("diplomaError","Please enter the name of the diploma.");
+    diploma.style.borderColor="var(--error)";
+    valid=false;
+}else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(diploma.value)){
+        showError("diplomaError","Please enter a valid name  for the diploma.");
+        diploma.style.borderColor="var(--error)";
+        valid=false;
+    }else{
+        hideError("diplomaError");
+        diploma.style.borderColor="var(--success)";
+    }
+
+if(startDateEduc.value == ""){
+    showError("startDateError","Please enter the start date of the diploma.");
+    startDateEduc.style.borderColor="var(--error)";
+    valid=false;
+    }else if(startDateEduc.value > currentDate ){
+        showError("startDateError","Please enter a valid start date for the diploma .");
+        startDateEduc.style.borderColor="var(--error)";
+        valid=false;
+    }else{
+        hideError("startDateError");
+        startDateEduc.style.borderColor="var(--success)";
+    }
+
+    if(school.value.trim() == ""){
+        showError("schoolError","Please enter the name of the school.");
+        school.style.borderColor="var(--error)";
+        valid=false;
+    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(school.value)){
+            showError("schoolError","Please enter a valid name for the school.");
+            school.style.borderColor="var(--error)";
+            valid=false;
+        }else{
+            hideError("schoolError");
+            school.style.borderColor="var(--success)";
+        }
+    if(major.value.trim() == ""){
+        showError("majorError","Please enter the name of the major.");
+        major.style.borderColor="var(--error)";
+        valid=false;
+    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(major.value)){
+            showError("majorError","Please enter a valid name for the major.");
+            major.style.borderColor="var(--error)";
+            valid=false;
+        }else{
+            hideError("majorError");
+            major.style.borderColor="var(--success)";
+        }
+        return valid;
+}
+//************* Experiences Page   *************// 
+
+const field = document.getElementById('field');
+const startDateExp = document.getElementById('startDate');
+const endDateExp = document.getElementById('endDate');
+const company = document.getElementById('company');
+const description = document.getElementById('description');
+
+function addExperience(){
+if(validExperience()){
+const newExperience = new Education(field.value,startDateExp.value,endDateExp.value,company.value,description.value);
+students = JSON.parse(window.localStorage.getItem("students")) || [];
+let i = students.length-1;
+const student = students[i];
+student.experiences.push(newExperience);
+// projectCart(newExperience);
+window.localStorage.setItem("students", JSON.stringify(students));
+document.getElementById('form').reset();
+inputs.forEach(input => {input.style.borderColor = '';});
+}
+}
+
+function validExperience(){
+let valid=true;
+if(field.value.trim() == ""){
+showError("fieldError","Please enter the name of the field.");
+field.style.borderColor="var(--error)";
+valid=false;
+}else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(field.value)){
+    showError("fieldError","Please enter a valid name  for the field.");
+    field.style.borderColor="var(--error)";
+    valid=false;
+}else{
+    hideError("fieldError");
+    field.style.borderColor="var(--success)";
+}
+
+if(startDateExp.value == ""){
+showError("startDateError","Please enter the start date of the diploma.");
+startDateExp.style.borderColor="var(--error)";
+valid=false;
+}else if(startDateExp.value > currentDate ){
+    showError("startDateError","Please enter a valid start date for the diploma .");
+    startDateExp.style.borderColor="var(--error)";
+    valid=false;
+}else{
+    hideError("startDateError");
+    startDateExp.style.borderColor="var(--success)";
+}
+
+if(company.value.trim() == ""){
+    showError("companyError","Please enter the name of the company.");
+    company.style.borderColor="var(--error)";
+    valid=false;
+}else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(company.value)){
+        showError("companyError","Please enter a valid name for the company.");
+        company.style.borderColor="var(--error)";
+        valid=false;
+    }else{
+        hideError("companyError");
+        company.style.borderColor="var(--success)";
+    }
+    if(description.value.trim() == ""){
+        showError("descriptionError","Please enter the description of the project.");
+        description.style.borderColor="var(--error)";
+        valid=false;
+    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(description.value)){
+            showError("descriptionError","Please enter a valid description for the project.");
+            description.style.borderColor="var(--error)";
+            valid=false;
+        }else{
+            hideError("descriptionError");
+            description.style.borderColor="var(--success)";
+        }
+        return valid;
+}
+//************* Project page   *************// 
 
     const title = document.getElementById('title');
-    const description = document.getElementById('description');
+    // const description = document.getElementById('description');
     const link = document.getElementById('link');
     const date = document.getElementById('date');
     let skills;
@@ -120,7 +292,7 @@ function validStudent(){
 function addProject(){
     if(validPoject()){
         skills =  Array.from(document.querySelectorAll('input[name="skills"]:checked'), (checkbox) => checkbox.value);
-        const newProject = new Project(title.value,description.value,link.value,date.value,skills);
+        const newProject = new Project (title.value,description.value,link.value,date.value,skills);
         students = JSON.parse(window.localStorage.getItem("students")) || [];
         let i = students.length-1;
         const student = students[i];
@@ -134,7 +306,6 @@ function addProject(){
 
 function validPoject(){
     let valid=true;
-    let currentDate = new Date().toISOString().split('T')[0];
     if(title.value.trim() == ""){
         showError("titleError","Please enter the title of the project.");
         title.style.borderColor="var(--error)";
@@ -224,7 +395,6 @@ function showStudent(){
         let personInfo = document.createElement('div');
         personInfo.className='personInfo'
         personInfo.innerHTML = `<h1> ${student.firstName} ${student.lastName}</h1>
-                                <h2>Web Developer </h2>
                                 <p><i class="fa-solid fa-at"></i>${student.email}</p>
                                 <p><i class="fa-solid fa-phone"></i> ${student.tel}</p>
                                 <p><i class="fa-solid fa-user-group"></i> ${student.group}</p>`;
@@ -243,7 +413,7 @@ function download(){
         const content = document.getElementById('content');
 
         const options = {
-            margin:       0,        
+            margin:       -1,     
             filename:     'mon_portfolio.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },

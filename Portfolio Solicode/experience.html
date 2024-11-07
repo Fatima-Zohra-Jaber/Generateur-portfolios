@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiences</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1> Portfolio Management</h1>
+        <p>Build your professional portfolio easily</p>
+    </header>
+    <main >
+        <section class="experienceForm">
+            <h2 id="titleForm">Experience information</h2>
+            <form id="form">
+                <div class="form-group">
+                    <label for="field">Field</label>
+                    <input type="text" id="field" placeholder="Enter your field " onkeyup="validExperience()">
+                    <span class="error" id="fieldError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="startDate">Start date</label>
+                    <input type="date" id="startDate" placeholder="Enter the start date" onkeyup="validExperience()">
+                    <span class="error" id="startDateError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="endDate">End date</label>
+                    <input type="date" id="endDate" placeholder="Enter the end date" onkeyup="validExperience()">
+                    <span class="error" id="endDateError"></span>
+                </div>
+    
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" placeholder="Enter the name of the company" onkeyup="validExperience()">
+                    <span class="error" id="companyError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" placeholder="Enter project description" onkeyup="validExperience()">
+                    <span class="error" id="descriptionError"></span>
+                </div>
+    
+                <div class="form-group button">
+                <input type="button" value="Valid"  id="validButton" onclick="addExperience()">
+                <input type="button" value='Next'  id="next" class="nextButton" onclick="window.location.href = 'project.html'">
+                </div>
+
+            </form>
+        </section>
+        <section id="educationBlock">
+            <h2 id="titleBlock"> My Experiences </h2>
+            <div id="educationsSection">
+                <!-- code  js -->
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>  
+    
+</body>
+</html>
