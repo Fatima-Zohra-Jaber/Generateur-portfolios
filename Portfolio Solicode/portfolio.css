@@ -1,97 +1,170 @@
-
-
+:root {
+    --primary: #6366f1;    
+    --secondary: #8b5cf6;  
+    --background: #fafafa;
+    --surface: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --success: #10b981;
+    --error: #ef4444;
+    --accent: #3b82f6;
+    --border: #e5e7eb;
+    --hover: #4f46e5;
+    --gradient-start: #6366f1;
+    --gradient-end: #8b5cf6;
+}
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #f4f6f8;
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--background);
 }
 
-header {
-    text-align: center;
-    margin: 30px auto;
+#studentBlock {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--surface);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-    font-size: 2rem;
-    color: #1e88e5;
+#studentBlock  h1 {
+    font-size: 2.5em;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
 }
 
-header p {
+#studentBlock  h2 {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+}
+
+.personInfo p {
+    margin-bottom: 10px;
+}
+
+i {
+    margin-right: 0.6rem;
+    color: var(--primary);
+}
+
+#download {
+    background:  var(--success);
+    color: white;
+    border: none;
+    padding: 0.8rem;
     font-size: 1.1rem;
-    color: #6c757d;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 12%;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: fixed;
+    right: 18px;
+    bottom: 35px;
 }
 
-/* Sections*/
-section {
-    width: 80%;
-    margin: 50px auto;
+/******** Projects  Block *********/
+#projectsBlock {
+    max-width: 70%; 
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
-section h2 {
-    color: #1e88e5;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-#projectsSection{
+#projectsSection {
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
 }
-.project{
-    background-color: #ffffff;
+.projectCard {
     width: 45%;
-    height: 250px;
-    padding: 10px 25px;
-    margin: 0px auto;
-    border-radius: 50px 0px 50px 0px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    margin: 1rem auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
     position: relative;
-}
-.project h3{
-    color: #1565c0;
-    margin: 10px;
-    border-bottom: 1px solid #ddd;
-}
-.project p{
-    margin: 10px;
-    font-size: 1.1rem;
-    color: #6c757d;
-}
-.project span{
-    color: #333;
-    display: block;
-    font-weight:600;
-    margin: 5px 0px;
-}
-/* .project::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    top:0;
-    height: 250px;
-    width: 18px;
-    background-color: #6c757d;
-} */
-#download{
-    position: relative;
-    width: 30%;
-    float: right;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #ffffff;
-    background-color: #1e88e5;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-#download:hover {
-    background-color: #1565c0;
+.projectCard::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.projectCard:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.projectCard:hover::after {
+    transform: scaleX(1);
+}
+
+.projectCard h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.projectCard p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.projectCard .date {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.projectCard .githubLink {
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+
+
+.projectCard .githubLink:hover {
+    color: var(--hover);
+}
+.skill {
+    display: inline-block;
+    background-color: var(--background);
+    color:var(--text-secondary);
+    padding: 5px 12px;
+    margin: 4px;
+    border-radius: 15px;
+    font-size: 0.95rem;
 }

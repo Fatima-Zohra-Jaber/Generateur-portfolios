@@ -4,26 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1><i class="fa-solid fa-address-card"></i> Portfolio Management</h1>
-        <p>Create your Portfolio easily</p>
+        <p>Build your professional portfolio easily</p>
     </header>
-    <main>
+    <main >
         <section class="projectForm">
-            <h2 id="form-titre">Project information</h2>
+            <h2 id="titleForm">Project information</h2>
             <form id="form">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" id="title" placeholder="Enter project title" onkeyup="validPoject()">
                     <span class="error" id="titleError"></span>
                 </div>
-    
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" placeholder="Enter project description" onkeyup="validPoject()">
+                    <span class="error" id="descriptionError"></span>
+                </div>
                 <div class="form-group">
                     <label for="link">GitHub link</label>
-    
                     <input type="url" id="link" placeholder="Enter GitHub link" onkeyup="validPoject()">
                     <span class="error" id="linkError"></span>
                 </div>
@@ -45,24 +50,25 @@
                         <label for="js">JS</label>
                         <input type="checkbox" value="react" id="react" name="skills" onclick="validPoject()">
                         <label for="react">React</label>
+                        <input type="checkbox" value="figma" id="figma" name="skills" onclick="validPoject()">
+                        <label  for="figma">Figma</label>      
                         <input type="checkbox" value="php" id="php" name="skills" onclick="validPoject()">
                         <label for="php">PHP</label>
                         <input type="checkbox" value="sql" id="sql" name="skills" onclick="validPoject()">
                         <label  for="sql">SQL</label>
-                        <input type="checkbox" value="figma" id="figma" name="skills" onclick="validPoject()">
-                        <label  for="figma">Figma</label>      
                     </div>
                     <span class="error" id="skillsError"></span>
                 </div>
-                
-                <input type="button" value="Finish"  id="finishButton" onclick="showStudent()">
+                <div class="form-group button">
                 <input type="button" value="Valid"  id="validButton" onclick="addProject()">
+                <input type="button" value="Finish"  id="finishButton" onclick="portfolioPage()">
+                </div>
             </form>
         </section>
         <section id="projectsBlock" >
-            <h2>My Projects</h2>
+            <h2 id="titleBlock"> My Projects</h2>
             <div id="projectsSection">
-    
+                <!-- code  js -->
             </div>
             
         </section>
