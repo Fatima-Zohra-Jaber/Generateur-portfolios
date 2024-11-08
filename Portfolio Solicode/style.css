@@ -203,7 +203,7 @@ input[type="checkbox"]:checked::after {
 
 
 /******** Projects  Block *********/
-#projectsBlock {
+#projectsBlock, #educationBlock, #experiencesBlock {
     max-width: 85%; 
     margin: 2rem auto;
     padding: 2rem;
@@ -211,12 +211,12 @@ input[type="checkbox"]:checked::after {
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
-#projectsSection {
+#projectsSection, #educationsSection, #experiencesSection {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
-.projectCard {
+.cart {
     background: var(--surface);
     border-radius: 8px;
     padding: 2rem;
@@ -226,7 +226,7 @@ input[type="checkbox"]:checked::after {
     position: relative;
 }
 
-.projectCard::after {
+.cart::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -239,29 +239,29 @@ input[type="checkbox"]:checked::after {
     transition: transform 0.3s ease;
 }
 
-.projectCard:hover {
+.cart:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.projectCard:hover::after {
+.cart:hover::after {
     transform: scaleX(1);
 }
 
-.projectCard h3 {
+.cart h3 {
     font-size: 1.4rem;
     color: var(--text-primary);
     margin-bottom: 1rem;
     font-weight: 600;
 }
 
-.projectCard p {
+.cart p {
     color: var(--text-secondary);
     font-size: 0.95rem;
     margin-bottom: 1.2rem;
     line-height: 1.6;
 }
 
-.projectCard .date {
+.cart .date {
     display: flex;
     align-items: center;
     color: var(--text-secondary);
@@ -269,7 +269,7 @@ input[type="checkbox"]:checked::after {
     margin-bottom: 1rem;
 }
 
-.projectCard .githubLink {
+.cart .githubLink {
     display: flex;
     align-items: center;
     color: var(--primary);
@@ -279,12 +279,12 @@ input[type="checkbox"]:checked::after {
     margin-bottom: 1rem;
 }
 
-.projectCard  i {
+.cart  i {
     margin-right: 0.6rem;
     color: var(--primary);
 }
 
-.projectCard .githubLink:hover {
+.cart .githubLink:hover {
     color: var(--hover);
 }
 .skill {

@@ -142,7 +142,7 @@ if(validEducation()){
     let i = students.length-1;
     const student = students[i];
     student.educations.push(newEducation);
-    // projectCart(newEducation);
+    educationCart(newEducation);
     window.localStorage.setItem("students", JSON.stringify(students));
     document.getElementById('form').reset();
     inputs.forEach(input => {input.style.borderColor = '';});
@@ -204,6 +204,25 @@ if(startDateEduc.value == ""){
         }
         return valid;
 }
+
+function educationCart(education){
+    const educationsSection = document.getElementById('educationsSection');
+    let educationSection = document.createElement('div');
+    educationSection.className="educationCard cart";
+    educationSection.innerHTML = `<h3>${education.diploma}</h3>
+                                    <p>${education.startDate}</p>
+                                <div class="date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span> ${education.endDate}</span>
+                                </div>
+                                    <i class="fab fa-github"></i>
+                                    ${education.school}
+                                <div class="skills">
+                                    <span class="skill">${education.major}</span>
+                                </div>`;
+    educationsSection.appendChild(educationSection);
+}
+
 //************* Experiences Page   *************// 
 
 const field = document.getElementById('field');
@@ -214,12 +233,12 @@ const description = document.getElementById('description');
 
 function addExperience(){
 if(validExperience()){
-const newExperience = new Education(field.value,startDateExp.value,endDateExp.value,company.value,description.value);
+const newExperience = new Experience(field.value,startDateExp.value,endDateExp.value,company.value,description.value);
 students = JSON.parse(window.localStorage.getItem("students")) || [];
 let i = students.length-1;
 const student = students[i];
 student.experiences.push(newExperience);
-// projectCart(newExperience);
+experienceCart(newExperience);
 window.localStorage.setItem("students", JSON.stringify(students));
 document.getElementById('form').reset();
 inputs.forEach(input => {input.style.borderColor = '';});
@@ -279,6 +298,26 @@ if(company.value.trim() == ""){
             description.style.borderColor="var(--success)";
         }
         return valid;
+}
+
+
+function experienceCart(experience){
+    const experiencesSection = document.getElementById('experiencesSection');
+    let experienceSection = document.createElement('div');
+    experienceSection.className="experienceCard cart";
+    experienceSection.innerHTML = `<h3>${experience.field}</h3>
+                                    <p>${experience.startDate}</p>
+                                <div class="date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span> ${experience.endDate}</span>
+                                </div>
+                                    <i class="fab fa-github"></i>
+                                    ${experience.company}
+                                <div class="skills">
+                                    <span class="skill">${experience.description}</span>
+                                </div>`;
+                                experiencesSection.appendChild(experienceSection);
+     
 }
 //************* Project page   *************// 
 
@@ -367,6 +406,27 @@ function validPoject(){
     return valid;
 }
 
+
+function projectCart(project){
+    const projectsSection = document.getElementById('projectsSection');
+    let projectSection = document.createElement('div');
+    projectSection.className="projectCard cart";
+    projectSection.innerHTML = `<h3>${project.title}</h3>
+                                <p>${project.description}</p>
+                                <div class="date">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span> ${project.date}</span>
+                                </div>
+                                <a href="${project.gitHubLink}" class="githubLink">
+                                    <i class="fab fa-github"></i>
+                                    ${project.gitHubLink}
+                                </a>
+                                <div class="skills">
+                                    ${project.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
+                                </div>`
+    projectsSection.appendChild(projectSection);
+     
+}
 //************* portfolio page   *************// 
 
 function portfolioPage(){
@@ -399,7 +459,15 @@ function showStudent(){
                                 <p><i class="fa-solid fa-phone"></i> ${student.tel}</p>
                                 <p><i class="fa-solid fa-user-group"></i> ${student.group}</p>`;
         personSection.appendChild(personInfo);
-        
+
+        const educations = student.educations || [];
+            for(let i=0; i<educations.length;i++){
+                educationCart(educations[i]);
+            }
+        const experiences = student.experiences || [];
+            for(let i=0; i<experiences.length;i++){
+                experienceCart(experiences[i]);
+            }
         const projects = student.projects || [];
             for(let i=0; i<projects.length;i++){
                 projectCart(projects[i]);
@@ -434,26 +502,6 @@ function hideError(id){
     document.getElementById(id).innerHTML="";
 }
 
-function projectCart(project){
-    const projectsSection = document.getElementById('projectsSection');
-    let projectSection = document.createElement('div');
-    projectSection.className="projectCard ";
-    projectSection.innerHTML = `<h3>${project.title}</h3>
-                                <p>${project.description}</p>
-                                <div class="date">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span> ${project.date}</span>
-                                </div>
-                                <a href="${project.gitHubLink}" class="githubLink">
-                                    <i class="fab fa-github"></i>
-                                    ${project.gitHubLink}
-                                </a>
-                                <div class="skills">
-                                    ${project.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
-                                </div>`
-    projectsSection.appendChild(projectSection);
-     
-}
 
 
 
