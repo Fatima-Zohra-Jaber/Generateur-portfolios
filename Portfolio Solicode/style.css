@@ -151,7 +151,7 @@ input[type="checkbox"]:checked::after {
     display: flex;
     justify-content: end;
 }
-.nextButton, #finishButton, #validButton,#download {
+.nextButton, #finishButton, #validButton {
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
     color: white;
     border: none;
@@ -203,20 +203,63 @@ input[type="checkbox"]:checked::after {
 
 
 /******** Projects  Block *********/
-#projectsBlock, #educationBlock, #experiencesBlock {
-    max-width: 85%; 
-    margin: 2rem auto;
+
+#education,#experience,#projects,#contact {
+    width: 85%;
+    margin: 0px auto 2rem;
     padding: 2rem;
     background: var(--surface);
-    border-radius: 16px;
+    border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
-#projectsSection, #educationsSection, #experiencesSection {
+#educationList , #experiencesList{
+    padding-left: 20px;
+    margin-left: 50px;
+    border-left: 2px solid var(--primary);
+
+}
+
+.educationItem , .experienceItem{
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 1.5rem;
+}
+
+.educationItem::before ,.experienceItem::before{
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-radius: 50%;
+}
+
+.educationItem h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.educationItem h5 ,.experienceItem h5 {
+    color: var(--primary);
+    font-size: 1rem;
+    font-style: italic;
+    margin-top: 0.3rem;
+}
+.educationItem p, .experienceItem p {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+#projectsList {
+    margin: 0 2rem 1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 3.5rem;
 }
-.cart {
+.projectItem {
     background: var(--surface);
     border-radius: 8px;
     padding: 2rem;
@@ -224,9 +267,9 @@ input[type="checkbox"]:checked::after {
     transition: all 0.3s ease;
     border: 1px solid var(--border);
     position: relative;
+    transition: 0.7s ease;
 }
-
-.cart::after {
+.projectItem::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -239,29 +282,30 @@ input[type="checkbox"]:checked::after {
     transition: transform 0.3s ease;
 }
 
-.cart:hover {
+.projectItem:hover {
+    transform: scale(1.1);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.cart:hover::after {
+.projectItem:hover::after {
     transform: scaleX(1);
 }
 
-.cart h3 {
+.projectItem h3 {
     font-size: 1.4rem;
     color: var(--text-primary);
     margin-bottom: 1rem;
     font-weight: 600;
 }
 
-.cart p {
+.projectItem p {
     color: var(--text-secondary);
     font-size: 0.95rem;
     margin-bottom: 1.2rem;
     line-height: 1.6;
 }
 
-.cart .date {
+.projectItem .date {
     display: flex;
     align-items: center;
     color: var(--text-secondary);
@@ -269,7 +313,7 @@ input[type="checkbox"]:checked::after {
     margin-bottom: 1rem;
 }
 
-.cart .githubLink {
+.projectItem .githubLink {
     display: flex;
     align-items: center;
     color: var(--primary);
@@ -279,12 +323,12 @@ input[type="checkbox"]:checked::after {
     margin-bottom: 1rem;
 }
 
-.cart  i {
+.projectItem  i {
     margin-right: 0.6rem;
     color: var(--primary);
 }
 
-.cart .githubLink:hover {
+.projectItem .githubLink:hover {
     color: var(--hover);
 }
 .skill {
@@ -295,4 +339,66 @@ input[type="checkbox"]:checked::after {
     margin: 4px;
     border-radius: 15px;
     font-size: 0.95rem;
+}
+
+#popSection {
+    display: none; 
+    position: fixed; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    
+}
+#popConfirm{
+    background-color: white;
+    border-radius: 10px;
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    padding: 30px 30px 10px;
+    font-size: 0.7em;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    /* position: relative; */
+}
+
+
+#popConfirm i {
+    font-size: 40px;
+    color: var(--error);
+    margin-bottom: 10px;
+}
+
+#popConfirm h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+#popConfirm p {
+    margin: 10px 0;
+}
+
+#popConfirm button {
+    background-color: var(--accent);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#popConfirm button:hover {
+    background-color: var(--hover);
 }

@@ -1,17 +1,14 @@
 class Education{
-    constructor(diploma,startDate,endDate,school,major){
-        this.diploma=diploma;
-        this.startDate=startDate;
-        this.endDate=endDate;
-        this.school=school;
-        this.major=major;
+    constructor(institution,period,degree){
+        this.institution=institution;
+        this.period=period;
+        this.degree=degree;
     }
 }
 class Experience{
-    constructor(field,startDate,endDate,company,description){
-        this.field=field;
-        this.startDate=startDate;
-        this.endDate=endDate;
+    constructor(role,period,company,description){
+        this.role=role;
+        this.period=period;
         this.company=company;
         this.description=description;
     }
@@ -128,16 +125,13 @@ function validStudent(){
 }
 //************* Education Page   *************// 
 
-    const diploma = document.getElementById('diploma');
-    const startDateEduc = document.getElementById('startDate');
-    const endDateEduc = document.getElementById('endDate');
-    const school = document.getElementById('school');
-    const major = document.getElementById('major');
-    const currentDate = new Date().toISOString().split('T')[0];
+    const institution = document.getElementById('institution');
+    const periodEduc = document.getElementById('period');
+    const degree = document.getElementById('degree');
 
 function addEducation(){
 if(validEducation()){
-    const newEducation = new Education(diploma.value,startDateEduc.value,endDateEduc.value,school.value,major.value);
+    const newEducation = new Education(institution.value,periodEduc.value,degree.value);
     students = JSON.parse(window.localStorage.getItem("students")) || [];
     let i = students.length-1;
     const student = students[i];
@@ -152,88 +146,69 @@ if(validEducation()){
 
 function validEducation(){
 let valid=true;
-if(diploma.value.trim() == ""){
-    showError("diplomaError","Please enter the name of the diploma.");
-    diploma.style.borderColor="var(--error)";
+if(institution.value.trim() == ""){
+    showError("institutionError","Please enter the name of the institution.");
+    institution.style.borderColor="var(--error)";
     valid=false;
-}else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(diploma.value)){
-        showError("diplomaError","Please enter a valid name  for the diploma.");
-        diploma.style.borderColor="var(--error)";
+}else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(institution.value)){
+        showError("institutionError","Please enter a valid name  for the institution.");
+        institution.style.borderColor="var(--error)";
         valid=false;
     }else{
-        hideError("diplomaError");
-        diploma.style.borderColor="var(--success)";
+        hideError("institutionError");
+        institution.style.borderColor="var(--success)";
     }
 
-if(startDateEduc.value == ""){
-    showError("startDateError","Please enter the start date of the diploma.");
-    startDateEduc.style.borderColor="var(--error)";
+if(periodEduc.value == ""){
+    showError("periodError","Please enter the start and the end date of the institution.");
+    periodEduc.style.borderColor="var(--error)";
     valid=false;
-    }else if(startDateEduc.value > currentDate ){
-        showError("startDateError","Please enter a valid start date for the diploma .");
-        startDateEduc.style.borderColor="var(--error)";
+    }else if(!/^\d{2}.\d{4}\s-\s\d{2}.\d{4}$/.test(periodEduc.value)){
+        showError("periodError","Please enter a valid start date for the institution .");
+        periodEduc.style.borderColor="var(--error)";
         valid=false;
     }else{
-        hideError("startDateError");
-        startDateEduc.style.borderColor="var(--success)";
+        hideError("periodError");
+        periodEduc.style.borderColor="var(--success)";
     }
 
-    if(school.value.trim() == ""){
-        showError("schoolError","Please enter the name of the school.");
-        school.style.borderColor="var(--error)";
+    if(degree.value.trim() == ""){
+        showError("degreeError","Please enter the name of the degree.");
+        degree.style.borderColor="var(--error)";
         valid=false;
-    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(school.value)){
-            showError("schoolError","Please enter a valid name for the school.");
-            school.style.borderColor="var(--error)";
+    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(degree.value)){
+            showError("degreeError","Please enter a valid name for the degree.");
+            degree.style.borderColor="var(--error)";
             valid=false;
         }else{
-            hideError("schoolError");
-            school.style.borderColor="var(--success)";
+            hideError("degreeError");
+            degree.style.borderColor="var(--success)";
         }
-    if(major.value.trim() == ""){
-        showError("majorError","Please enter the name of the major.");
-        major.style.borderColor="var(--error)";
-        valid=false;
-    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(major.value)){
-            showError("majorError","Please enter a valid name for the major.");
-            major.style.borderColor="var(--error)";
-            valid=false;
-        }else{
-            hideError("majorError");
-            major.style.borderColor="var(--success)";
-        }
+    
         return valid;
 }
 
 function educationCart(education){
-    const educationsSection = document.getElementById('educationsSection');
-    let educationSection = document.createElement('div');
-    educationSection.className="educationCard cart";
-    educationSection.innerHTML = `<h3>${education.diploma}</h3>
-                                    <p>${education.startDate}</p>
-                                <div class="date">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span> ${education.endDate}</span>
-                                </div>
-                                    <i class="fab fa-github"></i>
-                                    ${education.school}
-                                <div class="skills">
-                                    <span class="skill">${education.major}</span>
-                                </div>`;
-    educationsSection.appendChild(educationSection);
+    const educationList = document.getElementById('educationList');
+    let educationItem = document.createElement('div');
+    educationItem.className="educationItem";
+    educationItem.innerHTML = `
+                                <h3>${education.degree}</h3>
+                                <h5>${education.period}</h5>
+                                <p> ${education.institution}</p>`;
+    educationList.appendChild(educationItem);
 }
 
 //************* Experiences Page   *************// 
 
-const field = document.getElementById('field');
-const startDateExp = document.getElementById('startDate');
-const endDateExp = document.getElementById('endDate');
+const role = document.getElementById('role');
+const periodExp = document.getElementById('period');
 const company = document.getElementById('company');
 const description = document.getElementById('description');
 
 function addExperience(){
 if(validExperience()){
-const newExperience = new Experience(field.value,startDateExp.value,endDateExp.value,company.value,description.value);
+const newExperience = new Experience(role.value,periodExp.value,company.value,description.value);
 students = JSON.parse(window.localStorage.getItem("students")) || [];
 let i = students.length-1;
 const student = students[i];
@@ -247,32 +222,18 @@ inputs.forEach(input => {input.style.borderColor = '';});
 
 function validExperience(){
 let valid=true;
-if(field.value.trim() == ""){
-showError("fieldError","Please enter the name of the field.");
-field.style.borderColor="var(--error)";
+if(role.value.trim() == ""){
+showError("roleError","Please enter the name of the role.");
+role.style.borderColor="var(--error)";
 valid=false;
-}else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(field.value)){
-    showError("fieldError","Please enter a valid name  for the field.");
-    field.style.borderColor="var(--error)";
+}else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(role.value)){
+    showError("roleError","Please enter a valid name  for the role.");
+    role.style.borderColor="var(--error)";
     valid=false;
 }else{
-    hideError("fieldError");
-    field.style.borderColor="var(--success)";
+    hideError("roleError");
+    role.style.borderColor="var(--success)";
 }
-
-if(startDateExp.value == ""){
-showError("startDateError","Please enter the start date of the diploma.");
-startDateExp.style.borderColor="var(--error)";
-valid=false;
-}else if(startDateExp.value > currentDate ){
-    showError("startDateError","Please enter a valid start date for the diploma .");
-    startDateExp.style.borderColor="var(--error)";
-    valid=false;
-}else{
-    hideError("startDateError");
-    startDateExp.style.borderColor="var(--success)";
-}
-
 if(company.value.trim() == ""){
     showError("companyError","Please enter the name of the company.");
     company.style.borderColor="var(--error)";
@@ -285,6 +246,20 @@ if(company.value.trim() == ""){
         hideError("companyError");
         company.style.borderColor="var(--success)";
     }
+
+if(periodExp.value == ""){
+showError("periodError","Please enter the start date and the end date.");
+periodExp.style.borderColor="var(--error)";
+valid=false;
+}else if(!/^[\d{2}\.\d{4}\s-\s\d{2}\.\d{4}]+$/.test(periodExp.value)){
+    showError("periodError","Please enter a valid start date and end date .");
+    periodExp.style.borderColor="var(--error)";
+    valid=false;
+}else{
+    hideError("periodError");
+    periodExp.style.borderColor="var(--success)";
+}
+
     if(description.value.trim() == ""){
         showError("descriptionError","Please enter the description of the project.");
         description.style.borderColor="var(--error)";
@@ -302,21 +277,14 @@ if(company.value.trim() == ""){
 
 
 function experienceCart(experience){
-    const experiencesSection = document.getElementById('experiencesSection');
-    let experienceSection = document.createElement('div');
-    experienceSection.className="experienceCard cart";
-    experienceSection.innerHTML = `<h3>${experience.field}</h3>
-                                    <p>${experience.startDate}</p>
-                                <div class="date">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span> ${experience.endDate}</span>
-                                </div>
-                                    <i class="fab fa-github"></i>
-                                    ${experience.company}
-                                <div class="skills">
-                                    <span class="skill">${experience.description}</span>
-                                </div>`;
-                                experiencesSection.appendChild(experienceSection);
+    const experienceSection = document.getElementById('experiencesList');
+    let experienceItem = document.createElement('div');
+    experienceItem.className="experienceItem";
+    experienceItem.innerHTML = `
+                                <h3> ${experience.role} - ${experience.company}</h3>
+                                <h5> ${experience.period}</h5>
+                                <p>${experience.description}</p>`;
+    experienceSection.appendChild(experienceItem);
      
 }
 //************* Project page   *************// 
@@ -325,6 +293,7 @@ function experienceCart(experience){
     // const description = document.getElementById('description');
     const link = document.getElementById('link');
     const date = document.getElementById('date');
+    const currentDate = new Date().toISOString().split('T')[0];
     let skills;
    
     
@@ -408,10 +377,10 @@ function validPoject(){
 
 
 function projectCart(project){
-    const projectsSection = document.getElementById('projectsSection');
-    let projectSection = document.createElement('div');
-    projectSection.className="projectCard cart";
-    projectSection.innerHTML = `<h3>${project.title}</h3>
+    const projectsList = document.getElementById('projectsList');
+    let projectItem = document.createElement('div');
+    projectItem.className="projectItem";
+    projectItem.innerHTML = `<h3>${project.title}</h3>
                                 <p>${project.description}</p>
                                 <div class="date">
                                     <i class="fas fa-calendar-alt"></i>
@@ -424,7 +393,7 @@ function projectCart(project){
                                 <div class="skills">
                                     ${project.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
                                 </div>`
-    projectsSection.appendChild(projectSection);
+    projectsList.appendChild(projectItem);
      
 }
 //************* portfolio page   *************// 
@@ -436,7 +405,8 @@ function portfolioPage(){
     const student = students[i];
     
     if (student.projects.length === 0) {
-        alert('Please add at least one project');
+        // alert('Please add at least one project');
+        confirm();
         return;}
          window.location.href="portfolio.html";
 }
@@ -451,14 +421,27 @@ function showStudent(){
         students = JSON.parse(window.localStorage.getItem("students")) || [];
         let i = students.length-1;
         const student = students[i];
-        const personSection = document.getElementById('studentBlock');
+        document.getElementById("logo").innerHTML=`${student.firstName} ${student.lastName}`;
+        const home = document.getElementById('about');
         let personInfo = document.createElement('div');
         personInfo.className='personInfo'
-        personInfo.innerHTML = `<h1> ${student.firstName} ${student.lastName}</h1>
-                                <p><i class="fa-solid fa-at"></i>${student.email}</p>
-                                <p><i class="fa-solid fa-phone"></i> ${student.tel}</p>
-                                <p><i class="fa-solid fa-user-group"></i> ${student.group}</p>`;
-        personSection.appendChild(personInfo);
+        personInfo.innerHTML = `
+                                <h2>Hello, I'm  ${student.firstName} ${student.lastName}</h2>
+                                <p>Passionate Web Weveloper with experience in front-end and back-end.</br>
+                                   I love building beautiful and functional websites.</p>
+                                <a href="#portfolio" class="btnPortfolio">View my portfolio</a>`;
+        home.appendChild(personInfo);
+        let icon = document.createElement('div');
+        icon.className='socialLinks'
+        icon.innerHTML = `<ul>
+                                <a href="${student.gitHubLink}"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="${student.email}"><i class="fas fa-envelope"></i></a>
+                                <a href="${student.tel}"><i class="fab fa-whatsapp"></i> </a>
+                            </ul>
+                        </div>
+                       `;
+        home.appendChild(icon);
 
         const educations = student.educations || [];
             for(let i=0; i<educations.length;i++){
@@ -472,6 +455,40 @@ function showStudent(){
             for(let i=0; i<projects.length;i++){
                 projectCart(projects[i]);
             }
+        const contact=document.getElementById('contact');
+        let contactInfo= document.createElement('div');
+        contactInfo.className='contactContent';
+        contactInfo.innerHTML = `
+                                <form id="contactForm">
+                                <p>Feel free to contact me; I will respond as soon as possible.</p>
+                                    <input type="text" id="name" placeholder="Your name">
+                                    <input type="email" id="email" placeholder="Your email">
+                                    <textarea id="message" placeholder="Your message" ></textarea>
+                                    <button type="submit">Send</button>
+                                </form>
+                                <div id="contactInfo">
+                                    <h3>Contact Info</h3>
+                                    <i class="fas fa-envelope"></i> 
+                                    <p>${student.email}</p>
+                                    <i class="fas fa-phone"></i> 
+                                    <p>${student.tel}</p>
+                                </div>`;
+        contact.appendChild(contactInfo);
+
+        const footerSection=document.getElementById('footer');
+        let footer=document.createElement('div');
+        footer.className='footerContent'
+        footer.innerHTML=`<p>© 2024 - ${student.firstName} ${student.lastName}. All rights reserved.</p>
+                        <div class="socialLinks">
+                            <ul>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fas fa-envelope"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i> </a>
+                            </ul>
+                        </div>`;
+        footerSection.appendChild(footer);                
+
     
 }
     
@@ -481,11 +498,11 @@ function download(){
         const content = document.getElementById('content');
 
         const options = {
-            margin:       -1,     
+            margin:       0,     
             filename:     'mon_portfolio.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            html2canvas:  { scale: 2, scrollY: 0, scrollX: 0 },
+            jsPDF:        { unit: 'pt', format: 'a4', orientation: 'landscape' }
         };
 
         html2pdf().set(options).from(content).save();
@@ -502,9 +519,15 @@ function hideError(id){
     document.getElementById(id).innerHTML="";
 }
 
+function confirm() {
+    const popDiv = document.getElementById("popSection");
+    popDiv.style.display = 'block';
+}
 
-
-
+function ok(){
+    const popDiv = document.getElementById("popSection");
+    popDiv.style.display = 'none';
+}
 // //localStorage
 // window.localStorage.setItem("student", JSON.stringify(student));
 // window.localStorage.getItem("key");

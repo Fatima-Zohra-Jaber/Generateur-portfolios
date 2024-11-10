@@ -18,32 +18,22 @@
             <h2 id="titleForm">Education information</h2>
             <form id="form">
                 <div class="form-group">
-                    <label for="diploma">Diploma</label>
-                    <input type="text" id="diploma" placeholder="Enter your diploma level" onkeyup="validEducation()">
-                    <span class="error" id="diplomaError"></span>
+                    <label for="institution">Institution</label>
+                    <input type="text" id="institution" placeholder="Enter the name of the institution." onkeyup="validEducation()">
+                    <span class="error" id="institutionError"></span>
                 </div>
                 <div class="form-group">
-                    <label for="startDate">Start date</label>
-                    <input type="date" id="startDate" placeholder="Enter the start date" onkeyup="validEducation()">
-                    <span class="error" id="startDateError"></span>
-                </div>
-                <div class="form-group">
-                    <label for="endDate">End date</label>
-                    <input type="date" id="endDate" placeholder="Enter the end date" onkeyup="validEducation()">
-                    <span class="error" id="endDateError"></span>
+                    <label for="period">Period</label>
+                    <input type="text" id="period" placeholder="MM.YYYY - MM.YYYY" onkeyup="validEducation()">
+                    <span class="error" id="periodError"></span>
                 </div>
     
                 <div class="form-group">
-                    <label for="school">School</label>
-                    <input type="text" id="school" placeholder="Enter the name of the school" onkeyup="validEducation()">
-                    <span class="error" id="schoolError"></span>
+                    <label for="degree">Degree</label>
+                    <input type="text" id="degree" placeholder="Enter the name of the degree." onkeyup="validEducation()">
+                    <span class="error" id="degreeError"></span>
                 </div>
 
-                <div class="form-group">
-                    <label for="major">Major</label>
-                    <input type="text" id="major" placeholder="Enter the major of the school" onkeyup="validEducation()">
-                    <span class="error" id="majorError"></span>
-                </div>
     
                 <div class="form-group button">
                 <input type="button" value="Valid"  id="validButton" onclick="addEducation()">
@@ -52,9 +42,9 @@
 
             </form>
         </section>
-        <section id="educationBlock">
+        <section id="education">
             <h2 id="titleBlock"> My Eduction Career</h2>
-            <div id="educationsSection">
+            <div id="educationList">
                 <!-- code  js -->
             </div>
         </section>

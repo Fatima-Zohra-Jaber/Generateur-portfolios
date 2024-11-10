@@ -18,30 +18,23 @@
             <h2 id="titleForm">Experience information</h2>
             <form id="form">
                 <div class="form-group">
-                    <label for="field">Field</label>
-                    <input type="text" id="field" placeholder="Enter your field " onkeyup="validExperience()">
-                    <span class="error" id="fieldError"></span>
+                    <label for="role">Role</label>
+                    <input type="text" id="role" placeholder="Enter the name of the role." onkeyup="validExperience()">
+                    <span class="error" id="roleError"></span>
                 </div>
-                <div class="form-group">
-                    <label for="startDate">Start date</label>
-                    <input type="date" id="startDate" placeholder="Enter the start date" onkeyup="validExperience()">
-                    <span class="error" id="startDateError"></span>
-                </div>
-                <div class="form-group">
-                    <label for="endDate">End date</label>
-                    <input type="date" id="endDate" placeholder="Enter the end date" onkeyup="validExperience()">
-                    <span class="error" id="endDateError"></span>
-                </div>
-    
                 <div class="form-group">
                     <label for="company">Company</label>
                     <input type="text" id="company" placeholder="Enter the name of the company" onkeyup="validExperience()">
                     <span class="error" id="companyError"></span>
                 </div>
-
+                <div class="form-group">
+                    <label for="period">Period</label>
+                    <input type="text" id="period" placeholder="MM.YYYY - MM.YYYY" onkeyup="validExperience()">
+                    <span class="error" id="periodError"></span>
+                </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" id="description" placeholder="Enter project description" onkeyup="validExperience()">
+                    <input type="text" id="description" placeholder="Enter the description of the project " onkeyup="validExperience()">
                     <span class="error" id="descriptionError"></span>
                 </div>
     
@@ -52,9 +45,9 @@
 
             </form>
         </section>
-        <section id="experiencesBlock" >
+        <section id="experience" >
             <h2 id="titleBlock"> My Experiences</h2>
-            <div id="experiencesSection">
+            <div id="experiencesList">
                 <!-- code  js -->
             </div>
             

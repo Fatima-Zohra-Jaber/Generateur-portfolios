@@ -14,41 +14,230 @@
     --gradient-end: #8b5cf6;
 }
 
-#studentBlock {
-    max-width: 70%;
-    margin: 100px auto;
-    background-color: var(--surface);
-    border-radius: 8px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.personInfo{
-    margin-left: 50px;
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
 }
-.personInfo  h1 {
-    font-size: 2.5em;
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3.75rem;
+    background: var(--surface);
+    color: var(--text-primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+    text-transform: capitalize;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--hover);
+}
+
+#about {
+    text-align: center;
+    padding: 100px 0px;
+}
+
+#about h2 {
+    text-transform:capitalize ;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+#about p {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+.socialLinks ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.socialLinks ul a {
     color: var(--primary);
+    font-size: 1.4rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.socialLinks ul a:hover {
+    color: var(--hover);
+    transform: translateY(-1px) scale(1.2);
+}
+
+.btnPortfolio {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.btnPortfolio:hover {
+    background: var(--hover);
+}
+
+
+
+#titleForm, #titleBlock {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    position: relative;
+}
+
+#titleForm::after, #titleBlock::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-radius: 3px;
+}
+
+.contactContent{
+    display: flex;
+    justify-content: space-around;
+}
+#contactForm{
+    width: 45%;
+}
+#contactForm p{
+    margin: 1rem 0;
+}
+#contactForm input, #contactForm textarea {
+    width: 100%;
+    padding: 12px;
     margin-bottom: 1rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+#contactForm input:focus, #contactForm textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+#contactForm button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#contactInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+#contactInfo h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+    width: 100%;
+}
+
+#contactInfo p {
+    margin: 1rem 0;
+    font-size: 1rem;
     font-weight: 600;
 }
 
-.personInfo p {
-    color: var(--text-secondary);
-    margin-bottom: 10px;
-}
-
-i {
-    margin-right: 0.6rem;
+#contactInfo i {
     color: var(--primary);
+    font-size: 1.75rem;
 }
 
-#download {
-    background:  var(--success);
-    text-align: center;
-    padding: 0.8rem 0.5rem;
-    width: 12%;
-    position: fixed;
-    right: 18px;
-    bottom: 35px;
+
+/* Footer Style */
+footer {
+    background: var(--surface);
+    color: var(--text-secondary);
+    border-top: 2px solid var(--border);
 }
+footer nav {
+    width: 30%;
+    padding: 1.5rem 0;
+    margin: 0 auto;
+}
+.footerContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem;
+    margin: 0 3.75rem;
+    border-top: 2px solid var(--border);
+}
+
+
+#download  i{
+    color:  var(--primary);
+    font-size: 2.5rem;
+    position: fixed;
+    right: 2%;
+    bottom: 12.5%;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#download  i:hover {
+color: var(--success);
+transform: translateY(-1px) scale(1.2);
+} 
+
+
+
