@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student information</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <link rel="stylesheet" href="style.css">
@@ -39,6 +39,16 @@
                     <label for="tel">Phone</label>
                     <input type="tel" id="tel" placeholder="+212XXX-XX-XX-XX" maxlength=16 onkeyup="validStudent()" >
                     <span class="error" id="telError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="gitHub">GitHub link</label>
+                    <input type="url" id="gitHub" placeholder="Enter your GitHub link" onkeyup="validStudent()">
+                    <span class="error" id="gitHubError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="linkedIn">LinkedIn link</label>
+                    <input type="url" id="linkedIn" placeholder="Enter your LinkedIn link" onkeyup="validStudent()">
+                    <span class="error" id="linkedInError"></span>
                 </div>
 
                 <div class="form-group">

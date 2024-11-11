@@ -23,11 +23,13 @@ class Project{
     }
 }
 class Student{
-    constructor(firstName,lastName,email,tel,group){
+    constructor(firstName,lastName,email,tel,gitHub,linkedIn,group){
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
         this.tel=tel;
+        this.gitHub=gitHub;
+        this.linkedIn=linkedIn;
         this.group=group;
         this.educations=[];
         this.experiences=[];
@@ -41,6 +43,8 @@ class Student{
     const lastName = document.getElementById('lastName');
     const email = document.getElementById('email');
     const tel = document.getElementById('tel');
+    const gitHub=document.getElementById('gitHub');
+    const linkedIn=document.getElementById('linkedIn');
     const group = document.getElementById('group');
     const inputs = document.querySelectorAll('input, select');
     let  students = [];
@@ -48,7 +52,7 @@ class Student{
 
 function addStudent(){
     if(validStudent()){
-        const newStudent = new  Student(firstName.value.trim(),lastName.value.trim(),email.value,tel.value,group.value);
+        const newStudent = new  Student(firstName.value.trim(),lastName.value.trim(),email.value,tel.value,gitHub.value,linkedIn.value,group.value);
         students = JSON.parse(window.localStorage.getItem("students")) || [];
         students.push(newStudent);
         window.localStorage.setItem("students", JSON.stringify(students));
@@ -112,7 +116,30 @@ function validStudent(){
             hideError("telError");
             tel.style.borderColor="var(--success)";
         }
-
+    if(gitHub.value.trim() == ""){
+        showError("gitHubError","Please enter the link of your GitHub profile.");
+        gitHub.style.borderColor="var(--error)";
+        valid=false;
+    }else if(!/^(https:\/\/)?github\.com\/([a-zA-Z0-9-]+)\/?$/.test(gitHub.value)){
+            showError("gitHubError","Please enter a valid link of your GitHub profile.");
+            gitHub.style.borderColor="var(--error)";
+            valid=false;
+        }else{
+            hideError("gitHubError");
+            gitHub.style.borderColor="var(--success)";
+        } 
+    if(linkedIn.value.trim() == ""){
+        showError("linkedInError","Please enter the link of your LinkedIn profile.");
+        linkedIn.style.borderColor="var(--error)";
+        valid=false;
+    }else if(!/^(https:\/\/)?(www\.)?linkedin\.com\/in\/([a-zA-Z0-9-]+)\/?$/.test(linkedIn.value)){
+            showError("linkedInError","Please enter a valid link of your LinkedIn profile.");
+            linkedIn.style.borderColor="var(--error)";
+            valid=false;
+        }else{
+            hideError("linkedInError");
+            linkedIn.style.borderColor="var(--success)";
+        }    
     if(group.value == ""){
         showError("groupError","Please select your group.");
         group.style.borderColor="var(--error)";
@@ -163,8 +190,8 @@ if(periodEduc.value == ""){
     showError("periodError","Please enter the start and the end date of the institution.");
     periodEduc.style.borderColor="var(--error)";
     valid=false;
-    }else if(!/^\d{2}.\d{4}\s-\s\d{2}.\d{4}$/.test(periodEduc.value)){
-        showError("periodError","Please enter a valid start date for the institution .");
+    }else if(!/^(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])\s-\s(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])$/.test(periodEduc.value)){
+        showError("periodError","Please enter a valid the start and the end date for the institution .");
         periodEduc.style.borderColor="var(--error)";
         valid=false;
     }else{
@@ -251,7 +278,7 @@ if(periodExp.value == ""){
 showError("periodError","Please enter the start date and the end date.");
 periodExp.style.borderColor="var(--error)";
 valid=false;
-}else if(!/^[\d{2}\.\d{4}\s-\s\d{2}\.\d{4}]+$/.test(periodExp.value)){
+}else if(!/^(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])\s-\s(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])$/.test(periodExp.value)){
     showError("periodError","Please enter a valid start date and end date .");
     periodExp.style.borderColor="var(--error)";
     valid=false;
@@ -429,14 +456,14 @@ function showStudent(){
                                 <h2>Hello, I'm  ${student.firstName} ${student.lastName}</h2>
                                 <p>Passionate Web Weveloper with experience in front-end and back-end.</br>
                                    I love building beautiful and functional websites.</p>
-                                <a href="#portfolio" class="btnPortfolio">View my portfolio</a>`;
+                                <a href="#projects" class="btnPortfolio">View my portfolio</a>`;
         home.appendChild(personInfo);
         let icon = document.createElement('div');
         icon.className='socialLinks'
         icon.innerHTML = `<ul>
-                                <a href="${student.gitHubLink}"><i class="fab fa-github"></i></a>
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                                <a href="${student.email}"><i class="fas fa-envelope"></i></a>
+                                <a href="${student.gitHub}" target="_blank" ><i class="fab fa-github"></i></a>
+                                <a href="https://${student.linkedIn}"target="_blank"><i class="fab fa-linkedin"></i></a>
+                                <a href="mailto:${student.email}"><i class="fas fa-envelope"></i></a>
                                 <a href="${student.tel}"><i class="fab fa-whatsapp"></i> </a>
                             </ul>
                         </div>
@@ -481,10 +508,10 @@ function showStudent(){
         footer.innerHTML=`<p>© 2024 - ${student.firstName} ${student.lastName}. All rights reserved.</p>
                         <div class="socialLinks">
                             <ul>
-                                <a href="#"><i class="fab fa-github"></i></a>
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                                <a href="#"><i class="fab fa-whatsapp"></i> </a>
+                                <a href="${student.gitHub}" target="_blank" ><i class="fab fa-github"></i></a>
+                                <a href="https://${student.linkedIn}"target="_blank"><i class="fab fa-linkedin"></i></a>
+                                <a href="mailto:${student.email}"><i class="fas fa-envelope"></i></a>
+                                <a href="${student.tel}"><i class="fab fa-whatsapp"></i> </a>
                             </ul>
                         </div>`;
         footerSection.appendChild(footer);                
@@ -520,12 +547,12 @@ function hideError(id){
 }
 
 function confirm() {
-    const popDiv = document.getElementById("popSection");
+    const popDiv = document.getElementById("popUp");
     popDiv.style.display = 'block';
 }
 
 function ok(){
-    const popDiv = document.getElementById("popSection");
+    const popDiv = document.getElementById("popUp");
     popDiv.style.display = 'none';
 }
 // //localStorage

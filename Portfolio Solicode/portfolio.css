@@ -21,7 +21,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Arial', sans-serif;
     background: var(--background);
     color: var(--text-primary);
 }
@@ -208,9 +208,11 @@ footer {
     background: var(--surface);
     color: var(--text-secondary);
     border-top: 2px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 footer nav {
-    width: 30%;
     padding: 1.5rem 0;
     margin: 0 auto;
 }
@@ -229,7 +231,7 @@ footer nav {
     font-size: 2.5rem;
     position: fixed;
     right: 2%;
-    bottom: 12.5%;
+    bottom: 14%;
     cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease;
 }
