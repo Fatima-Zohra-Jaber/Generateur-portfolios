@@ -157,62 +157,61 @@ function validStudent(){
     const degree = document.getElementById('degree');
 
 function addEducation(){
-if(validEducation()){
-    const newEducation = new Education(institution.value,periodEduc.value,degree.value);
-    students = JSON.parse(window.localStorage.getItem("students")) || [];
-    let i = students.length-1;
-    const student = students[i];
-    student.educations.push(newEducation);
-    educationCart(newEducation);
-    window.localStorage.setItem("students", JSON.stringify(students));
-    document.getElementById('form').reset();
-    inputs.forEach(input => {input.style.borderColor = '';});
-
-}
+    if(validEducation()){
+        const newEducation = new Education(institution.value,periodEduc.value,degree.value);
+        students = JSON.parse(window.localStorage.getItem("students")) || [];
+        let i = students.length-1;
+        const student = students[i];
+        student.educations.push(newEducation);
+        educationCart(newEducation);
+        window.localStorage.setItem("students", JSON.stringify(students));
+        document.getElementById('form').reset();
+        inputs.forEach(input => {input.style.borderColor = '';});
+    }
 }
 
 function validEducation(){
-let valid=true;
-if(institution.value.trim() == ""){
-    showError("institutionError","Please enter the name of the institution.");
-    institution.style.borderColor="var(--error)";
-    valid=false;
-}else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(institution.value)){
-        showError("institutionError","Please enter a valid name  for the institution.");
+    let valid=true;
+    if(institution.value.trim() == ""){
+        showError("institutionError","Please enter the name of the institution.");
         institution.style.borderColor="var(--error)";
         valid=false;
-    }else{
-        hideError("institutionError");
-        institution.style.borderColor="var(--success)";
-    }
-
-if(periodEduc.value == ""){
-    showError("periodError","Please enter the start and the end date of the institution.");
-    periodEduc.style.borderColor="var(--error)";
-    valid=false;
-    }else if(!/^(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])\s-\s(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])$/.test(periodEduc.value)){
-        showError("periodError","Please enter a valid the start and the end date for the institution .");
-        periodEduc.style.borderColor="var(--error)";
-        valid=false;
-    }else{
-        hideError("periodError");
-        periodEduc.style.borderColor="var(--success)";
-    }
-
-    if(degree.value.trim() == ""){
-        showError("degreeError","Please enter the name of the degree.");
-        degree.style.borderColor="var(--error)";
-        valid=false;
-    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(degree.value)){
-            showError("degreeError","Please enter a valid name for the degree.");
-            degree.style.borderColor="var(--error)";
+    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(institution.value)){
+            showError("institutionError","Please enter a valid name  for the institution.");
+            institution.style.borderColor="var(--error)";
             valid=false;
         }else{
-            hideError("degreeError");
-            degree.style.borderColor="var(--success)";
+            hideError("institutionError");
+            institution.style.borderColor="var(--success)";
         }
-    
-        return valid;
+
+    if(periodEduc.value == ""){
+        showError("periodError","Please enter the start and the end date of the institution.");
+        periodEduc.style.borderColor="var(--error)";
+        valid=false;
+        }else if(!/^(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])\s-\s(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])$/.test(periodEduc.value)){
+            showError("periodError","Please enter a valid the start and the end date for the institution .");
+            periodEduc.style.borderColor="var(--error)";
+            valid=false;
+        }else{
+            hideError("periodError");
+            periodEduc.style.borderColor="var(--success)";
+        }
+
+        if(degree.value.trim() == ""){
+            showError("degreeError","Please enter the name of the degree.");
+            degree.style.borderColor="var(--error)";
+            valid=false;
+        }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(degree.value)){
+                showError("degreeError","Please enter a valid name for the degree.");
+                degree.style.borderColor="var(--error)";
+                valid=false;
+            }else{
+                hideError("degreeError");
+                degree.style.borderColor="var(--success)";
+            }
+        
+    return valid;
 }
 
 function educationCart(education){
@@ -234,74 +233,73 @@ const company = document.getElementById('company');
 const description = document.getElementById('description');
 
 function addExperience(){
-if(validExperience()){
-const newExperience = new Experience(role.value,periodExp.value,company.value,description.value);
-students = JSON.parse(window.localStorage.getItem("students")) || [];
-let i = students.length-1;
-const student = students[i];
-student.experiences.push(newExperience);
-experienceCart(newExperience);
-window.localStorage.setItem("students", JSON.stringify(students));
-document.getElementById('form').reset();
-inputs.forEach(input => {input.style.borderColor = '';});
-}
+    if(validExperience()){
+    const newExperience = new Experience(role.value,periodExp.value,company.value,description.value);
+    students = JSON.parse(window.localStorage.getItem("students")) || [];
+    let i = students.length-1;
+    const student = students[i];
+    student.experiences.push(newExperience);
+    experienceCart(newExperience);
+    window.localStorage.setItem("students", JSON.stringify(students));
+    document.getElementById('form').reset();
+    inputs.forEach(input => {input.style.borderColor = '';});
+    }
 }
 
 function validExperience(){
-let valid=true;
-if(role.value.trim() == ""){
-showError("roleError","Please enter the name of the role.");
-role.style.borderColor="var(--error)";
-valid=false;
-}else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(role.value)){
-    showError("roleError","Please enter a valid name  for the role.");
+    let valid=true;
+    if(role.value.trim() == ""){
+    showError("roleError","Please enter the name of the role.");
     role.style.borderColor="var(--error)";
     valid=false;
-}else{
-    hideError("roleError");
-    role.style.borderColor="var(--success)";
-}
-if(company.value.trim() == ""){
-    showError("companyError","Please enter the name of the company.");
-    company.style.borderColor="var(--error)";
-    valid=false;
-}else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(company.value)){
-        showError("companyError","Please enter a valid name for the company.");
-        company.style.borderColor="var(--error)";
+    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(role.value)){
+        showError("roleError","Please enter a valid name  for the role.");
+        role.style.borderColor="var(--error)";
         valid=false;
     }else{
-        hideError("companyError");
-        company.style.borderColor="var(--success)";
+        hideError("roleError");
+        role.style.borderColor="var(--success)";
     }
-
-if(periodExp.value == ""){
-showError("periodError","Please enter the start date and the end date.");
-periodExp.style.borderColor="var(--error)";
-valid=false;
-}else if(!/^(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])\s-\s(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])$/.test(periodExp.value)){
-    showError("periodError","Please enter a valid start date and end date .");
-    periodExp.style.borderColor="var(--error)";
-    valid=false;
-}else{
-    hideError("periodError");
-    periodExp.style.borderColor="var(--success)";
-}
-
-    if(description.value.trim() == ""){
-        showError("descriptionError","Please enter the description of the project.");
-        description.style.borderColor="var(--error)";
+    if(company.value.trim() == ""){
+        showError("companyError","Please enter the name of the company.");
+        company.style.borderColor="var(--error)";
         valid=false;
-    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(description.value)){
-            showError("descriptionError","Please enter a valid description for the project.");
-            description.style.borderColor="var(--error)";
+    }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(company.value)){
+            showError("companyError","Please enter a valid name for the company.");
+            company.style.borderColor="var(--error)";
             valid=false;
         }else{
-            hideError("descriptionError");
-            description.style.borderColor="var(--success)";
+            hideError("companyError");
+            company.style.borderColor="var(--success)";
         }
-        return valid;
-}
 
+    if(periodExp.value == ""){
+    showError("periodError","Please enter the start date and the end date.");
+    periodExp.style.borderColor="var(--error)";
+    valid=false;
+    }else if(!/^(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])\s-\s(0[1-9]|1[0-2])\.(19[0-9]{2}|201[0-9]|202[0-4])$/.test(periodExp.value)){
+        showError("periodError","Please enter a valid start date and end date .");
+        periodExp.style.borderColor="var(--error)";
+        valid=false;
+    }else{
+        hideError("periodError");
+        periodExp.style.borderColor="var(--success)";
+    }
+
+        if(description.value.trim() == ""){
+            showError("descriptionError","Please enter the description of the project.");
+            description.style.borderColor="var(--error)";
+            valid=false;
+        }else if(!/^[a-zA-Z0-9\s\._'-]+$/.test(description.value)){
+                showError("descriptionError","Please enter a valid description for the project.");
+                description.style.borderColor="var(--error)";
+                valid=false;
+            }else{
+                hideError("descriptionError");
+                description.style.borderColor="var(--success)";
+            }
+    return valid;
+}
 
 function experienceCart(experience){
     const experienceSection = document.getElementById('experiencesList');
@@ -314,16 +312,16 @@ function experienceCart(experience){
     experienceSection.appendChild(experienceItem);
      
 }
+
+
 //************* Project page   *************// 
 
     const title = document.getElementById('title');
-    // const description = document.getElementById('description');
     const link = document.getElementById('link');
     const date = document.getElementById('date');
     const currentDate = new Date().toISOString().split('T')[0];
     let skills;
    
-    
 function addProject(){
     if(validPoject()){
         skills =  Array.from(document.querySelectorAll('input[name="skills"]:checked'), (checkbox) => checkbox.value);
@@ -392,7 +390,7 @@ function validPoject(){
             hideError("dateError");
             date.style.borderColor="var(--success)";
         }
- skills = Array.from(document.querySelectorAll('input[name="skills"]:checked'));
+    skills = Array.from(document.querySelectorAll('input[name="skills"]:checked'));
     if(skills.length === 0){
         showError("skillsError","Please select at least one skill.");
         valid=false;
@@ -402,24 +400,23 @@ function validPoject(){
     return valid;
 }
 
-
 function projectCart(project){
     const projectsList = document.getElementById('projectsList');
     let projectItem = document.createElement('div');
     projectItem.className="projectItem";
-    projectItem.innerHTML = `<h3>${project.title}</h3>
-                                <p>${project.description}</p>
-                                <div class="date">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    <span> ${project.date}</span>
-                                </div>
-                                <a href="${project.gitHubLink}" class="githubLink">
-                                    <i class="fab fa-github"></i>
-                                    ${project.gitHubLink}
-                                </a>
-                                <div class="skills">
-                                    ${project.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
-                                </div>`
+    projectItem.innerHTML= `<h3>${project.title}</h3>
+                            <p>${project.description}</p>
+                            <div class="date">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span> ${project.date}</span>
+                            </div>
+                            <a href="${project.gitHubLink}" class="githubLink">
+                                <i class="fab fa-github"></i>
+                                ${project.gitHubLink}
+                            </a>
+                            <div class="skills">
+                                ${project.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
+                            </div>`
     projectsList.appendChild(projectItem);
      
 }
@@ -432,7 +429,6 @@ function portfolioPage(){
     const student = students[i];
     
     if (student.projects.length === 0) {
-        // alert('Please add at least one project');
         confirm();
         return;}
          window.location.href="portfolio.html";
@@ -471,13 +467,26 @@ function showStudent(){
         home.appendChild(icon);
 
         const educations = student.educations || [];
+        if(educations.length > 0){
             for(let i=0; i<educations.length;i++){
                 educationCart(educations[i]);
             }
+        }else{
+            document.getElementById('education').style.display='none';
+            document.getElementById('educNav').style.display='none';
+            document.getElementById('educFooter').style.display='none';
+        }
+
         const experiences = student.experiences || [];
+        if(experiences.length > 0){
             for(let i=0; i<experiences.length;i++){
                 experienceCart(experiences[i]);
             }
+        }else{
+            document.getElementById('experience').style.display='none';
+            document.getElementById('expNav').style.display='none';
+            document.getElementById('expFooter').style.display='none';
+        }    
         const projects = student.projects || [];
             for(let i=0; i<projects.length;i++){
                 projectCart(projects[i]);
@@ -555,10 +564,3 @@ function ok(){
     const popDiv = document.getElementById("popUp");
     popDiv.style.display = 'none';
 }
-// //localStorage
-// window.localStorage.setItem("student", JSON.stringify(student));
-// window.localStorage.getItem("key");
-// window.localStorage.student;
-// window.localStorage.removeItem("key");
-// window.localStorage.clear();
-// window.localStorage.key(i);

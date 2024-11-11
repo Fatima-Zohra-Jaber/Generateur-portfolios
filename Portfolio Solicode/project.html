@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,17 +18,17 @@
             <form id="form">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" id="title" placeholder="Enter project title" onkeyup="validPoject()">
+                    <input type="text" id="title" placeholder="Enter the title of the project " onkeyup="validPoject()">
                     <span class="error" id="titleError"></span>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" id="description" placeholder="Enter project description" onkeyup="validPoject()">
+                    <input type="text" id="description" placeholder="Enter the description of the project " onkeyup="validPoject()">
                     <span class="error" id="descriptionError"></span>
                 </div>
                 <div class="form-group">
                     <label for="link">GitHub link</label>
-                    <input type="url" id="link" placeholder="Enter GitHub link" onkeyup="validPoject()">
+                    <input type="url" id="link" placeholder="Enter GitHub link of the project" onkeyup="validPoject()">
                     <span class="error" id="linkError"></span>
                 </div>
     
@@ -65,22 +64,23 @@
                 </div>
             </form>
         </section>
+
         <section id="projects" >
             <h2 id="titleBlock"> My Projects</h2>
             <div id="projectsList">
                 <!-- code  js -->
-            </div>
-            
+            </div>  
         </section>
     </main>
+    
     <section id="popUp">
         <div id="popConfirm">
-            
             <p><i class="fa-solid fa-triangle-exclamation"></i>You have add at least one project!</p>
             <button onclick="ok()">Ok</button> 
-        </section>
+        </div>
+    </section>
 
-    </div>
+   
     <script src="script.js"></script>
 </body>
 </html>

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Education</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <h1> Portfolio Management</h1>
@@ -27,14 +27,12 @@
                     <input type="text" id="period" placeholder="MM.YYYY - MM.YYYY" maxlength=17 onkeyup="validEducation()">
                     <span class="error" id="periodError"></span>
                 </div>
-    
                 <div class="form-group">
                     <label for="degree">Degree</label>
                     <input type="text" id="degree" placeholder="Enter the name of the degree." onkeyup="validEducation()">
                     <span class="error" id="degreeError"></span>
                 </div>
 
-    
                 <div class="form-group button">
                 <input type="button" value="Valid"  id="validButton" onclick="addEducation()">
                 <input type="button" value='Next'  id="next" class="nextButton" onclick="window.location.href = 'experience.html'">
@@ -42,8 +40,9 @@
 
             </form>
         </section>
+
         <section id="education">
-            <h2 id="titleBlock"> My Eduction Career</h2>
+            <h2 id="titleBlock"> My Eduction</h2>
             <div id="educationList">
                 <!-- code  js -->
             </div>
