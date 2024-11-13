@@ -23,7 +23,7 @@ class Project{
     }
 }
 class Student{
-    constructor(firstName,lastName,email,tel,gitHub,linkedIn,group){
+    constructor(firstName,lastName,email,tel,gitHub,linkedIn,group,educations=[],experiences=[],projects=[]){
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
@@ -31,9 +31,9 @@ class Student{
         this.gitHub=gitHub;
         this.linkedIn=linkedIn;
         this.group=group;
-        this.educations=[];
-        this.experiences=[];
-        this.projects=[];
+        this.educations=educations;
+        this.experiences=experiences;
+        this.projects=projects;
     }
 }
 
