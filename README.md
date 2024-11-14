@@ -1,4 +1,4 @@
-# Generateur-portfolios
+# Générateur-portfolios
 ## Objectif:
 Pour favoriser l’insertion professionnelle de nos apprenants, nous vous proposons de 
 développer une application web dédiée à Solicode. Celle-ci permettrait de saisir les 
