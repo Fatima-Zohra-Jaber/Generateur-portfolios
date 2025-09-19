@@ -55,7 +55,7 @@ Ouvrir index.html dans un navigateur.
 
 Remplir les informations personnelles puis cliquer sur Suivant.
 
-![informations personnelles](Screenshot/student-info.png)
+![informations personnelles](Screenshots/student-info.png)
 
 Ajouter un ou plusieurs diplômes puis cliquer sur Suivant.
 
