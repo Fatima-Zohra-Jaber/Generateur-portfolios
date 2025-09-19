@@ -59,22 +59,22 @@ Remplir les informations personnelles puis cliquer sur Suivant.
 
 Ajouter un ou plusieurs diplômes puis cliquer sur Suivant.
 
-![ajout diplôme](Screenshot/education.png)
+![ajout diplôme](Screenshots/education.png)
 
 Ajouter un ou plusieurs expériences professionnelles puis cliquer sur Suivant.
 
-![ajout expérience](Screenshot/experience.png)
+![ajout expérience](Screenshots/experience.png)
 
 Ajouter un ou plusieurs projets puis cliquer sur Terminer.
 
-![ajout projet](Screenshot/project.png)
+![ajout projet](Screenshots/project.png)
 
 Visualiser le portfolio et, si souhaité, l’exporter en PDF.
 
-![portfolio](Screenshot/portfolio_part1.png)
+![portfolio](Screenshots/portfolio_part1.png)
 
-![portfolio](Screenshot/portfolio_part2.png)
+![portfolio](Screenshots/portfolio_part2.png)
 
-![portfolio](Screenshot/portfolio_part3.png)
+![portfolio](Screenshots/portfolio_part3.png)
 
 
