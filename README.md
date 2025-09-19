@@ -8,6 +8,8 @@ L’application web collecte les informations des apprenants et leurs projets, p
 
 - **Formulaire d’inscription** : saisie des informations personnelles (Nom, Prénom, Email, Téléphone,lien GitHub, lien Linkedin, Groupe).
 
+- **Gestion des diplômes** : ajout illimité de diplômes avec nom du diplôme, nom de l’établissement et date d’obtention.
+
 - **Gestion des expériences professionnelles** : ajout illimité d’expériences professionnelles avec nom du poste, entreprise, description, date de debut et de fin.
 
 - **Gestion des projets**: ajout illimité de projets avec titre, lien GitHub, description et compétences associées.
@@ -16,7 +18,7 @@ L’application web collecte les informations des apprenants et leurs projets, p
 
 - **Export en PDF** : possibilité de télécharger son portfolio avec html2pdf.js.
 
-- **Stockage LocalStorage** : conservation des données via un objet Apprenant.
+- **Stockage LocalStorage** : conservation des données via un objet students.
 
 ## Structure de l’application
 
@@ -24,7 +26,7 @@ L’application web collecte les informations des apprenants et leurs projets, p
 /Generateur-portfolios/ 
 │
 ├── Portfolio Solicode/              # Code source
-│   ├── index.html                   # Page d’accueil 
+│   ├── index.html                   # Page d’inscription (informations personnelles)
 │   ├── education.html               # Page d’ajout des diplômes
 │   ├── experience.html              # Page d’ajout des expériences professionnelles
 │   ├── project.html                 # Page d’ajout des projets
@@ -41,12 +43,11 @@ L’application web collecte les informations des apprenants et leurs projets, p
 
 ## Technologies utilisées
 
-HTML5 / CSS3 / JavaScript
+- HTML5 / CSS3 / JavaScript
 
-LocalStorage pour la sauvegarde des données
+- LocalStorage pour la sauvegarde des données
 
-html2pdf.js pour l’export en PDF
-
+- html2pdf.js pour l’export en PDF
 
 
 ## Instructions d’utilisation
@@ -71,10 +72,6 @@ Ajouter un ou plusieurs projets puis cliquer sur Terminer.
 
 Visualiser le portfolio et, si souhaité, l’exporter en PDF.
 
-![portfolio](Screenshots/portfolio_part1.png)
-
-![portfolio](Screenshots/portfolio-part2.png)
-
-![portfolio](Screenshots/portfolio-part3.png)
+![portfolio](Screenshots/portfolio.png)
 
 
