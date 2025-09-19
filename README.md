@@ -73,8 +73,8 @@ Visualiser le portfolio et, si souhaité, l’exporter en PDF.
 
 ![portfolio](Screenshots/portfolio_part1.png)
 
-![portfolio](Screenshots/portfolio_part2.png)
+![portfolio](Screenshots/portfolio-part2.png)
 
-![portfolio](Screenshots/portfolio_part3.png)
+![portfolio](Screenshots/portfolio-part3.png)
 
 
